@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Account Details</h4>
+                </div>
+                <div class="card-body">
+                    <p><strong>Account Number:</strong> {{ account.account_number }}</p>
+                    <p><strong>Account Type:</strong> {{ account.account_type }}</p>
+                    <p><strong>Balance:</strong> ${{ "%.2f"|format(account.balance) }}</p>
+                    <p><strong>Currency:</strong> {{ account.currency }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Recent Transactions</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Description</th>
+                                <th>Type</th>
+                                <th>Amount</th>
+                                <th>Reference</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for transaction in transactions %}
+                            <tr>
+                                <td>{{ transaction.timestamp.strftime('%Y-%m-%d %H:%M') }}</td>
+                                <td>{{ transaction.description }}</td>
+                                <td>{{ transaction.transaction_type }}</td>
+                                <td>${{ "%.2f"|format(transaction.amount) }}</td>
+                                <td>{{ transaction.reference_id }}</td>
+                                <td>
+                                    {% if transaction.status == 'completed' %}
+                                        <span class="badge bg-success">Completed</span>
+                                    {% elif transaction.status == 'pending' %}
+                                        <span class="badge bg-warning">Pending</span>
+                                    {% else %}
+                                        <span class="badge bg-danger">Failed</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
