@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="text-center mb-4">
+                <h1>Welcome to Our Banking App</h1>
+                <p class="lead">Manage your finances easily and securely</p>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <a href="{{ url_for('.login') }}" class="btn btn-primary btn-block">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <a href="{{ url_for('.register') }}" class="btn btn-success btn-block">
+                        <i class="fas fa-user-plus"></i> Register
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

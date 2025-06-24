@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <h2 class="h4 mb-3">New Transaction</h2>
+                        <p class="text-muted">Manage your account transactions</p>
+                    </div>
+                    <form method="post">
+                        {{ form.hidden_tag() }}
+                        <div class="mb-4">
+                            <label for="account_id" class="form-label">Select Account</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-credit-card"></i>
+                                </span>
+                                {{ form.account_id(class="form-select") }}
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="amount" class="form-label">Amount</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </span>
+                                <input type="number" name="amount" id="amount" class="form-control" 
+                                       step="0.01" min="0.01" required
+                                       placeholder="Enter amount">
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="description" class="form-label">Description</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </span>
+                                <input type="text" name="description" id="description" class="form-control" 
+                                       required placeholder="Transaction description">
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="transaction_type" class="form-label">Transaction Type</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </span>
+                                <select name="transaction_type" id="transaction_type" class="form-select">
+                                    <option value="deposit">
+                                        <i class="fas fa-arrow-up me-2 text-success"></i>Deposit
+                                    </option>
+                                    <option value="withdrawal">
+                                        <i class="fas fa-arrow-down me-2 text-danger"></i>Withdrawal
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-paper-plane me-2"></i>Create Transaction
+                            </button>
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="{{ url_for('.dashboard') }}" class="text-primary">
+                                <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

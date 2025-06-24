@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <h2 class="h4 mb-3">Create New Account</h2>
+                        <p class="text-muted">Choose the type of account you want to create</p>
+                    </div>
+                    <form method="post">
+                        {{ form.hidden_tag() }}
+                        <div class="mb-4">
+                            <label for="account_type" class="form-label">Account Type</label>
+                            <div class="input-group">
+                                <span class="input-group-text">
+                                    <i class="fas fa-piggy-bank"></i>
+                                </span>
+                                {{ form.account_type(class="form-select") }}
+                            </div>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-plus me-2"></i>Create Account
+                            </button>
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="{{ url_for('.dashboard') }}" class="text-primary">
+                                <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

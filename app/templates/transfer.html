@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <h2>Transfer Funds</h2>
+    <form method="post">
+      {{ form.hidden_tag() }}
+      <div class="mb-3">{{ form.recipient.label }} {{ form.recipient(class="form-control") }}</div>
+      <div class="mb-3">{{ form.amount.label }} {{ form.amount(class="form-control") }}</div>
+      {{ form.submit(class="btn btn-primary") }}
+    </form>
+  </div>
+</div>
+{% endblock %}
